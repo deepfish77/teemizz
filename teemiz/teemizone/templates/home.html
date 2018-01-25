@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content4%}
+<head>
+<title>{% block head_title %}Teemiz - team up {% endblock %}</title>
+</head>
+<body>
+	<h1>Teemiz</h1>
+	<p>This is {{ html_var }} coming through</p>
+	<p>{% if bool_item %} Randon Num : {{num}} {% endif %}</p>
+	<p>
+		{% for some_item in some_list%} {% if some_item|divisibleby:"2" %}
+		Even Number {% endif %} {{some_item}}</br> {%endfor%}
+	</P>
+	<p>Some item is {{some_item}}</p>
+	</p>
+	<a href='/'>Home</a>
+	<a href='/about/'>About</a>
+	<a href='/contact/'>Contact</a>
+
+	<div class='container'>{% block content %}{% endblock content %}
+	</div>
+	{% endblock content4%}
+</body>
+</html>

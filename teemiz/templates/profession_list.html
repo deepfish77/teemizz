@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block head_title %}Teammates List {%
+endblock head_title %}
+ {% block content %}
+<h1>Teemates1</h1>
+
+<ul>
+	{% for obj in object_list %}
+	<li>{{ obj }} <br /> {{ obj.seniority }} {{ obj.technical_skills
+		}} {{ obj.occupation_category }} {{ obj.years_of_experience }}
+	</li> {% endfor %}
+</ul>
+{% endblock %}
+

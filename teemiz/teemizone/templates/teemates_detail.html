@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head_title %} Teemates Detail | {{block.super}}{% endblock head_title %}
+
+{% block content %}
+
+<h4>Skill Name: {{ object.technical_skills }} <small> <br>Seniority:  {{  object.seniority  }}</small></h4>
+<p><small><b>Category:</b>  {{ object.occupation_category }}</small></p>
+<p>{{ object.timestamp }}<small><b>Updated:</b></small>{{ object.updated|timesince }} ago</p>
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<title>{% block head_title %}TeeMiz{% endblock head_title %}</title> {% include 'snippets/css.html' %}
+
+<br>
+
+
+</head>
+
+<body>
+
+	{% include 'snippets/nav.html' %}
+			
+	<div class='container'>{% block content %}{% endblock content %}
+	</div>
+
+
+	{% include 'snippets/js.html' %}
+</body>
+</html>

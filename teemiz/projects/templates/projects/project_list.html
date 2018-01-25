@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block head_title %}Available Projects | {{
+block.super}}{% endblock head_title %} {% block content %}
+<h5>Projects List</h5>
+
+
+
+
+
+<!-- <div class='row'>
+	<div class='col-sm-3'>
+		<div class='thumbnail'>
+
+			<a href='{{ object.get_absolute_url }}'>{{ object.name }}</a><br />
+			
+			
+			{% if object %} 
+			  
+			      {% for item in object.get_desired_tech %}
+					 <small>Technolgy: </small>{{ item.name }} -<br /> 
+					 {% for it in item.tools.all %}<small>Tools:</small>
+							{{ it.name }} ,<br /> 
+					 {% endfor %}
+					  {% for req in object.requrements.all %}<small>Requirement:</small>
+							{{ req.name }} ,<br/> 
+					 {% endfor %}
+			     {% endfor %} 
+		    {% endif %}
+			</ul>
+			</p>
+		</div>
+	</div>
+</div>-->
+{% for object in object_list %}
+<div class="card">
+  <!-- <img class="card-img-top" src="assets/cheat-sheet/img/318x100.svg" alt="Card image cap"> -->
+  <div class="card-header">
+		<a href='{{ object.get_absolute_url }}'>{{ object.name }}</a></div>
+
+  <div class="card-block">
+
+  
+
+	<p class="card-text">
+	{% if object %} 
+			  
+			      {% for item in object.get_desired_tech %}
+					 <small>Technolgy: </small>{{ item.name }} -<br /> 
+					 {% for it in item.tools.all %}<small>Tools:</small>
+							{{ it.name }} ,<br /> 
+					 {% endfor %}
+					  {% for req in object.requrements.all %}<small>Requirement:</small>
+							{{ req.name }} ,<br/> 
+					 {% endfor %}
+			     {% endfor %} 
+		    {% endif %}
+	</p>
+	<a href="#" class="btn btn-primary">Join</a>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
