@@ -124,4 +124,3 @@ def rl_post_save_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(rl_pre_save_receiver, sender=Profession)
 
 # post_save.connect(rl_post_save_receiver, sender=Profession)
-
