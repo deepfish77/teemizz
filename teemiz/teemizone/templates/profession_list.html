@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block head_title %}
+ Professions List
+{%endblock head_title %}
+{% block content %}
+<h4>Professions List</h4>
+
+
+	{% for object in object_list %}
+	
+	<h5>Profession Summary</h5> 
+	<li><a href='detail/{{ object.slug }}/'>{{ object }}</a><br/>
+	<li> Name:  {{ object.name }} 
+	<li>Industry:  {{ object.industry}} 
+	<li>Category: {{ object.category }}
+	
+	 
+
+	 {% endfor %}
+
+{% endblock content %}
+

@@ -3,9 +3,132 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<style>
+@import url('https://fonts.googleapis.com/css?family=El+Messiri');
 
-<!-- Optional theme -->
+html {
+  box-sizing: border-box;
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+  font-family: 'El Messiri', sans-serif;
+  
+
+
+  &::before {
+    content: ' ';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('http://i66.tinypic.com/198g87.jpg') 0 0/cover no-repeat;
+    z-index: -1;
+  }
+}
+
+
+.card {
+  position: relative;
+  max-width: 26.5em;
+  margin: 2rem auto;
+  padding: 2em;
+  background: #fff;
+}
+
+.card__title {
+  margin: 0 auto 1em;
+  color: #333;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.card__img {
+  display: block;
+  width: 20em;
+  max-width: 100%;
+  margin: 1em auto;
+  border-radius: 2px;
+}
+
+.card__text {
+  margin: 2em 5%;
+  color: #646464;
+}
+
+.card__btn {
+  display: table;
+  padding: .7em 4em;
+  background: #ddba76;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 1em auto 0;
+}
+
+
+
+
+/**
+ * Card #15
+ */
+
+.card--15 {
+
+  overflow: hidden;
+  transition: all .3s;
+
+  .card__text,
+  .card__title,
+  .card__btn,
+  .card__img {
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    background-color: transparent;
+    background-image: url(http://oi66.tinypic.com/205xy4i.jpg), url(http://oi66.tinypic.com/205xy4i.jpg);
+    background-size: cover, 10% 10%;
+    background-position: center;
+    background-blend-mode: overlay;
+
+    .card__title {
+      color: #fff;
+      transform: translate3d(0,220px,0) scale(1.5);
+    }
+
+    .card__text {
+      color: #fff;
+      transform: translate3d(0,-20px,0) scale(1.2);
+    }
+
+    .card__img {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .card__btn {
+      transform: translate3d(0,-20px,0);
+    }
+
+  }
+}
+
+
+<!-- Optional theme
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
+ -->

@@ -3,7 +3,7 @@
 {% block head_title %}{{ user.username }} | {{ block.super}}{% endblock head_title %}
 
 {% block content %}
-<h1>{{ user.username }}</h1>
+<h5 style="color:Violet;"> Hello, {{ user.username }}</h5>
 <p>{% include 'profiles/snippet/follow_form.html' with username=user.username is_following=is_following %}</p>
 
 
@@ -12,13 +12,13 @@
 <button class='btn btn-default' type='submit'>Search</button>
 </form>
 <hr/>
-
+ <h5 style="color:Tomato;">My Projects</h5>
 {% if projects %}
      {% for proj in projects %}
 {{ request.path}}{{ proj.name }}
     <div class='row'>
     <div class='col-sm-12'>
-        <div class='thumbnail'> 
+        <div class='thumbnail' style="border: 2px solid DodgerBlue; background-color:hsl(0, 0%, 94%);"> 
             <h4>{{ proj.name }}</h4>
             <p><a href='{{ request.path}}?q={{ proj.name }}'>{{ proj.name }}</a> | 
             <a href='{{ request.path}}?q= {{ proj.desired_tech }}'> {{ proj.desired_tech }}</a>
@@ -28,6 +28,39 @@
             <ul>
                 {% for item in rest.item_set.all %}
                     <li style='margin-bottom: 15px;'><b>{{ item.name }}</b><br/>
+                        {% for ing in item.get_contents %}
+                            <a href='{{ request.path}}?q={{ ing}}'>{{ ing}}</a>
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+    </div>
+    </div>
+
+{% endfor %}
+
+{% else %}
+<p class='lead'>No Items Found</p>
+{% endif %}
+
+<h5 style="color:Tomato;">My Teams</h5>
+{% if teams %}
+     {% for team in teams %}
+{{ request.path}}{{ team.name }}
+    <div class='row'>
+    <div class='col-sm-12'>
+        <div class='thumbnail'> 
+            <h4>{{ team.name }}</h4>
+            <p><a href='{{ request.path}}?q={{ team.name }}'>{{ team.name }}</a> | 
+            <a href='{{ request.path}}?q= {{ team.objective }}'> {{ proj.desired_tech }}</a>
+           
+     	       </p>
+            <p>
+            <ul>
+                {% for item in team.item_set.all %}
+                    <li style='margin-bottom: 15px;'><b>{{ team.objective}}</b><br/>
                         {% for ing in item.get_contents %}
                             <a href='{{ request.path}}?q={{ ing}}'>{{ ing}}</a>
                         {% endfor %}

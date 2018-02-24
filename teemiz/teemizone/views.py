@@ -5,7 +5,7 @@ from django.views.generic import TemplateView , ListView , CreateView , DetailVi
 from .models import Profession
 from django.db.models import Q
 from teemizone.models import TechSkill
-from .forms import ProfessionRegistration , ProfessionCreateForm
+from .forms import  ProfessionCreateForm
 from django.template.context_processors import request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ProfessionCreateView(LoginRequiredMixin, CreateView):
     form_class = ProfessionCreateForm
     template_name = 'form.html'
-    success_url = "/teammates/"
+    success_url = "/professions/"
     # login_url = "/admin/login/"
     
     def form_valid(self, form):
@@ -26,28 +26,27 @@ class ProfessionCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(ProfessionCreateView, self).get_context_data(**kwargs)
         context['title'] = 'Add Profession'
-        
+    
         return context
     
-    
-@login_required()
-def team_create_view(request):
-    form = ProfessionRegistration(request.POST or None) 
-    errors = None     
-    #    if request.method == "POST":
-    #         name = request.POST.get("name") #request.POST["title"]
-    #         experience = request.POST.get("years_of_experience")
-    #         category = request.POST.get("occupation_category")
-    #         seniority = request.POST.get("seniority")
-    #         technical_skills= request.POST.get("technical_skills")
-        
-    if (form.is_valid()):
-        if request.user.is_authenticated():
-            
-            instance = form.save(commit=False)
-            instance.owner = request.user
-            instance.save()
-            
+# @login_required()
+# def profession_create_view(request):
+#     form = ProfessionRegistration(request.POST or None) 
+#     errors = None     
+#     #    if request.method == "POST":
+#     #         name = request.POST.get("name") #request.POST["title"]
+#     #         experience = request.POST.get("years_of_experience")
+#     #         category = request.POST.get("occupation_category")
+#     #         seniority = request.POST.get("seniority")
+#     #         technical_skills= request.POST.get("technical_skills")
+#         
+#     if (form.is_valid()):
+#         if request.user.is_authenticated():
+#             
+#             instance = form.save(commit=False)
+#             instance.owner = request.user
+#             instance.save()
+#             
             # Before association to User
 #             obj = Profession.objects.create(
 #                     name = form.cleaned_data.get('name'),
@@ -57,21 +56,21 @@ def team_create_view(request):
 #                     seniority = form.cleaned_data.get('seniority')
 #  
 #         )
-            return HttpResponseRedirect("/teammates/")
-        else:
-            return HttpResponseRedirect("/login/")
-    
-    if (form.errors):
-        print(form.errors)
-      
-    template_name = 'form.html'
-    context = {"form": form, "errors": errors}
-      
-    return  render(request, template_name , context)   
+#             return HttpResponseRedirect("/teammates/")
+#         else:
+#             return HttpResponseRedirect("/login/")
+#     
+#     if (form.errors):
+#         print(form.errors)
+#       
+#     template_name = 'form.html'
+#     context = {"form": form, "errors": errors}
+#       
+#     return  render(request, template_name , context)   
 
 
-def teammate_list_view(request):
-    template_name = 'teamates_list.html'
+def profesion_list_view(request):
+    template_name = 'profession_list.html'
     queryset = Profession.objects.all()
     print (queryset)
     context = {
@@ -83,30 +82,30 @@ def teammate_list_view(request):
 
     
 class ProfessionListVIew(ListView):
-    template_name = 'teamates_list.html'
+    template_name = 'profession_list.html'
 
     # queryset = Profession.objects.filter(occupation_category='python')
     def get_queryset(self):
         print("kwargs" + str(self.kwargs.get))
-        
+         
         slug = self.kwargs.get("slug")
+        print("THe slug :" , slug)
         if slug:
-            queryset = Profession.objects.filter(
-                
-                  Q (occupation_category__icontains=slug))
+            queryset = Profession.objects.filter(name=slug)
             print("QUER: " + str(queryset))
         else:
             queryset = Profession.objects.all()
             print("QUERAllpy: " + str(queryset.all()))
         return queryset  # ListView.get_queryset(self)
-    
+     
     # DETAIL VIEWS 
 
     
 class ProfessionDetailView(DetailView):
-    template_name = 'teemates_detail.html'
+    template_name = 'profession_detail.html'
 
     queryset = Profession.objects.all()
+    print("the originla queryset" , queryset)
      
     def get_context_data(self, **kwargs):
         print("The args are:" + str(kwargs))

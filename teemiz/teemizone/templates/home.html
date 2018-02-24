@@ -1,23 +1,79 @@
-{% extends "base.html" %} {% block content4%}
-<head>
-<title>{% block head_title %}Teemiz - team up {% endblock %}</title>
-</head>
-<body>
-	<h1>Teemiz</h1>
-	<p>This is {{ html_var }} coming through</p>
-	<p>{% if bool_item %} Randon Num : {{num}} {% endif %}</p>
-	<p>
-		{% for some_item in some_list%} {% if some_item|divisibleby:"2" %}
-		Even Number {% endif %} {{some_item}}</br> {%endfor%}
-	</P>
-	<p>Some item is {{some_item}}</p>
-	</p>
-	<a href='/'>Home</a>
-	<a href='/about/'>About</a>
-	<a href='/contact/'>Contact</a>
+{% extends "base.html" %}
 
-	<div class='container'>{% block content %}{% endblock content %}
-	</div>
-	{% endblock content4%}
-</body>
-</html>
+{% block head_title %}{{ user.username }} | {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+
+<form class='form' method='GET' action='.'>
+<input type='text' placeholder="Search.." name='q' value='{{ request.GET.q }}'>
+<button class='btn btn-default' type='submit'>Search</button>
+</form>
+<hr/>
+ <h5 style="color:Tomato;">Training Projects</h5>
+{% if projects %}
+     {% for proj in projects %}
+	<div></div>
+    <div class='row'>
+    <div class='col-sm-12'>
+        <div class='card' style="border: 2px solid DodgerBlue; background-color:hsl(0, 0%, 94%);"> 
+            <h5>{{ proj.name }}</h5>
+            <p><a href='{{ request.path}}?q={{ proj.name }}'>{{ proj.name }}</a> | 
+            <a href='{{ request.path}}?q= {{ proj.desired_tech }}'> {{ proj.desired_tech }}</a>
+         
+           
+            </p>
+            <p>
+            <ul>
+                {% for item in rest.item_set.all %}
+                    <li style='margin-bottom: 15px;'><b>{{ item.name }}</b><br/>
+                        {% for ing in item.get_contents %}
+                            <a href='{{ request.path}}?q={{ ing}}'>{{ ing}}</a>
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+    </div>
+    </div>
+
+{% endfor %}
+
+{% else %}
+<p class='lead'>No Items Found</p>
+{% endif %}
+
+<h5 style="color:Tomato;">Recommended Teams</h5>
+{% if teams %}
+<div class='row'>
+     
+
+    {% for team in teams %}
+  
+  	  <div class="card card--15">
+  <h2 class="card__title">Having fun with cards</h2>
+  <img class="card__img" src="http://oi66.tinypic.com/205xy4i.jpg" alt="">
+  <p class="card__text">Ok that's me with my not creative mind, now it's your turn add your cards to the house</p>
+  <a class="card__btn" href="" class="">buy me</a>
+</div>
+        <div class='w3-container w3-red w3-cell'> 
+            <h4>{{ team.name }}</h4>
+            <p><a href='{{ request.path}}?q={{ team.name }}'>{{ team.name }}</a> | 
+            <a href='{{ request.path}}?q= {{ team.objective }}'> {{ proj.desired_tech }}</a>
+            <form class='form' method='GET' action='.'>
+					<button class='btn btn-default' type='submit'>Join Team</button>
+			</form>
+          
+           
+           
+        </div>
+    </div>
+    
+
+{% endfor %}
+
+{% else %}
+<p class='lead'>No Items Found</p>
+{% endif %}
+
+{% endblock %}

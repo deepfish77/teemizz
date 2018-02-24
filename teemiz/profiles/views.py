@@ -7,7 +7,8 @@ from django.views.generic import CreateView, DetailView, View
 from .models import Profile
 from .forms import RegisterForm
 from projects.models import Project
-# Create your views here.
+from teammates.models import Team 
+
 
 User = get_user_model()
 
@@ -54,10 +55,21 @@ class ProfileDetailView(DetailView):
         context['is_following'] = is_following
         query = self.request.GET.get('q')
         print("the query" , query)
+        
+        
+        # getting the projects related to the user 
         items_exists = Project.objects.filter(user=user).exists()
-        qs = Project.objects.filter(user=user).search(query)
-        if items_exists and qs.exists():
-            context['projects'] = qs
+        project_qs = Project.objects.filter(user=user).search(query) 
+        if items_exists and project_qs.exists():
+            context['projects'] = project_qs
+        # getting the teams related to the user    
+        team_exists = Team.objects.filter(owner=user).exists()
+        print ("the team:" ,team_exists)
+        team_qs = Team.objects.filter(owner=user).search(query)
+        if team_exists and team_qs.exists():
+            context['teams'] = team_qs
+            print('team context: ' , team_qs)
+        
         return context 
     
     

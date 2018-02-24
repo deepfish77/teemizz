@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block head_title %} Professions  Detail |{{block.super}}{% endblock head_title %} {% block content %}
+
+<h5>Profession Name: {{ object.name }}</h5>
+<small>Industry:</small>
+{{ object.industry }}
+<p>
+	<small>Category:</small> {{ object.category }}
+</p>
+<p>
+	{{ object.timestamp }}<small><b>Updated:</b></small>{{object.updated|timesince }} ago
+</p>
+{% endblock content %}
+
+	
+
+

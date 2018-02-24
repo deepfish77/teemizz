@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head_title %}Teams  | {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+<p>Location: {{ object.team.name }}</p>
+{% if object.desired_tech %}
+Contents
+<ul>    
+    {% for item in object.get_desired_tech %}
+    <li>{{ item }}</li>
+    {% endfor %}
+
+</ul>
+{% endif %}
+
+ {% if object.excludes %}
+Excludes
+<ul>    
+    {% for item in object.get_excludes %}
+    <li>{{ item }}</li>
+    {% endfor %}
+
+</ul>
+{% endif %}
+
+
+{% endblock %}
