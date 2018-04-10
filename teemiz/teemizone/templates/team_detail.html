@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% block head_title %} Teams  Detail |{{block.super}}{% endblock head_title %} {% block content %}
+
+<h4>Welcome to:  {{ team }} team</h4>
+<small>Industry: {{ team.industry }}</small>
+
+<p>
+<p> <span class="glyphicon glyphicon-comment"></span> Team Summary:  {{ team.summary}}</p>
+</p>
+<p>
+
+	 
+	 
+  <div class='row'>
+	<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p><span class="glyphicon glyphicon-road"></span> <small>Objective: </small>{{ team.objective }}</p>
+<p><span class="glyphicon glyphicon-paperclip"></span> <small>Team Type: </small>{{ team.get_type_display}}</p>
+<p> <span class="glyphicon glyphicon-pencil"></span> <small>Team Industry </small>{{ team.industry }}</p>
+
+		</div>
+	</div>
+	<div class='col-sm-4'>
+		<div class='thumbnail'>
+`
+ {%for position in  team_positions %}
+  <b><h5>Available Positions</h5>></b>
+	 <b><h5>{{position.name}}</h5>></b>
+	 <li> <small>Description: </small>{{position.description}}</li>
+	 <li> <small>Profession: </small>{{position.profession}}</li>
+     <li> <small>Responsibilities: </small>{{position.responsibilities}}</p>
+	
+	
+	 {%for candidate in  position.candidtates %}
+	 <p>{{candidate.name}}</p>
+	 {% endfor %} 
+	
+ {% endfor %}
+		
+		
+		</div>
+	</div>
+</div>
+
+ <div class='row'>
+	
+</div>
+
+ <div class='row'>
+	<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p> <h5>Team Credits</h5>  </p>
+<li> The team starts to create projects , after each project the team will be credited with 
+a scoring according to the projects complexity, and the customers review </li>
+<li> When the team is built out of graduates , than the work of the team is done for free , after 
+the team reaches a certain score, the team will get paid projects	</li>
+		</div>
+	</div>
+		<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p><h5>Team Candidates </h5>  </p>
+<li> Graduate professionals can view the team, and can ask to join, after the request to join
+an interview process will be heald by the team existing members , and than a vote will be heald within the team to select the
+most suited one </li>
+		</div>
+	</div>
+		<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p><h5>Technologies </h5>  </p>
+<li>List of the technologies that are practiced at this team</li>
+		</div>
+	</div>
+	
+		<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p><h5>Team Strength </h5>  </p>
+<li>  This param will be determined by : - Team Seniority Number of projects, level of difficulty, customer satisfaction , positive reviews
+, It will decrease when members leave the team , it will increase when a sub has more credits that the leaving member  </li>
+		</div>
+	</div>
+	
+	<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p><h5>Team Leader </h5>  </p>
+<li> The team leaders are the following potentials: - Freelancers that either want to practice team leading , or 
+have a big project in which they need help , Course Instructors - Udemy instructors that want to lead their students in the real world - 
+Important - pretty big market , People working in compnies and want to recruit potentials, And voulenters doing it for fun </li>
+		</div>
+	</div>
+	
+	<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p><h5>Commitments </h5>  </p>
+<li>When new members join the team , they first need to aggree on the teams or the positions commitment which will include 
+the following :
+ - Number of hours dedicated weekly on the project
+ - Number of hours of online availability 
+ - Predefined notice when leaving the team
+ - Participation in meetings/brainstorming session etc </li>
+		</div>
+	</div>
+</div>
+
+<div class='row'>
+
+</div>
+
+
+
+{% endblock content %}

@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^detail/(?P<slug>[\w-]+)/$', ProfessionDetailView.as_view()),
     url(r'^$', profesion_list_view),
     url(r'^create/$', ProfessionCreateView.as_view()),
-    
+     
     ]
 
 # url(r'^teammateslist/(?P<slug>[\w-]+)/$', ProfessionListVIew.as_view()),        

@@ -3,22 +3,22 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+  </script>
+  
+  
+  
 <style>
 @import url('https://fonts.googleapis.com/css?family=El+Messiri');
 
-html {
-  box-sizing: border-box;
 
-  *,
-  *:after,
-  *:before {
-    box-sizing: inherit;
-  }
-}
 
 body {
-  min-height: 100vh;
-  display: flex;
+ 
+ 
   justify-content: center;
   align-items: center;
   line-height: 1.6;
@@ -26,25 +26,18 @@ body {
   
 
 
-  &::before {
-    content: ' ';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('http://i66.tinypic.com/198g87.jpg') 0 0/cover no-repeat;
-    z-index: -1;
-  }
-}
+  }
 
 
 .card {
-  position: relative;
-  max-width: 26.5em;
-  margin: 2rem auto;
+
+  width: 23.5em;
+  height: 29.5em;
+  margin: 2rem ;
   padding: 2em;
   background: #fff;
+  border-color: solid-black;
+  border-width:2px;
 }
 
 .card__title {
@@ -87,6 +80,88 @@ body {
 .card--15 {
 
   overflow: hidden;
+  
+  .card__text,
+  .card__title,
+  .card__btn_team,
+  .card__img {
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    background-color: transparent;
+    background-size: cover, 10% 10%;
+    background-position: center;
+    background-blend-mode: overlay;
+
+    .card__title {
+      color: #fff;
+      transform: translate3d(0,220px,0) scale(1.5);
+    }
+
+    .card__text {
+      color: #fff;
+      transform: translate3d(0,-20px,0) scale(1.2);
+    }
+
+    .card__img {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .card__btn {
+      transform: translate3d(0,-20px,0);
+    }
+
+  }
+  
+  
+}
+
+
+.card_team {
+
+  max-width: 26.5em;
+  height: 40em;
+  margin: 1rem ;
+  padding: 2em;
+  background: #fff;
+  border-color: solid-black;
+  border-width:2px;
+}
+
+.card__title_team {
+  margin: 0 auto 1em;
+  color: #333;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.card__img_team {
+  display: block;
+  width: 20em;
+  max-width: 100%;
+  margin: 1em auto;
+  border-radius: 2px;
+}
+
+.card__text_team {
+  margin: 2em 5%;
+  color: #6b5b95;
+}
+
+.card__btn_team {
+  display: table;
+  padding: .3em 4em;
+  background: #6b5b95;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 3em auto 0;
+}
+.card--16 {
+
+  overflow: hidden;
   transition: all .3s;
 
   .card__text,
@@ -123,9 +198,45 @@ body {
     }
 
   }
+  
+  
 }
+.presentationdiv {
+ 	background-image: url(http://www.carryology.com/wp-content/uploads/2016/01/headphones.jpg);
+    background-repeat: no-repeat;
+ 
+ 	background-size: cover, 20% 20%;
+ 	height: 230px;
+    width: cover;
+    background-color: transparent;
+    color:grey;
+    font
+   
+ 	
+  	
+}
+.slogen {
+ 	padding: 4em;
+ 	 font-size: 30px;
+  
+ 		
+ 	}
+.search {
+ 	position: relative;
+    bottom: 25em;
+    left: 50%;
+    font-size: 11px;
+ }
+#search_main{
+ 	border: 0.04em solid red;
+    border-radius: .5em;
 
-
+}  
+ 	
+ 	}
+ 	
+ 
+</style>
 <!-- Optional theme
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"

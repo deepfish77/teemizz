@@ -1,4 +1,39 @@
-{% extends "base.html"%} {% block content2 %}
-<h1>About</h1>
+{% extends "base.html" %} {% block head_title %} What are we about |{{block.super}}{% endblock head_title %} {% block content %}
+<h1>What are we about </h1>
 {% include 'snippets/sidebar.html' %}
-{% endblock content2 %}
+
+
+
+ <div class='row'>
+	<div class='col-sm-4'>
+		<div class='thumbnail'>
+<p> <h5>What are we about</h5>  </p>
+<li> Teemiz is about the new world that is emarging . The world in which the Gig economy, and the freelancing are 
+leaping towards new heights .
+Currently there are 53 Million americans that are involved in the gig industry, and that is about 30% of the manpower 
+of the working class in the US alone.
+Moreover , around 30% of the code that is generated in the world , is done by freelancers....
+Sites like fiverr, upwork and many more are thriving, and yet,most part  of this work is done by single individuals. And when its about the team ,
+the team is in the office, and with all the repect to Slack, Google Hangouts, Skype , and more , there is no platform that unites the 
+complete work operation into a single Vitual Workspace that will answer part of the may issues that emarge when the team is scattered around,
+insted of the office that we are all so used to.
+ 
+	</li>
+		</div>
+		
+		
+	
+
+		<div class='thumbnail'>
+<p> <h5>Workplace want experience</h5>  </p>
+<li> 
+ Yet you cannot get experience without a workplace, this is one of the main paradoxes encoutered these days,
+ and just by looking on the requirements of each position, new employees can get really intimidated, not to mention that someone 
+ needs to step out of the comfort zone, and give them a break.
+ This is what this application is all about, instead of looking for someone to give you a break , form teams with individuals in your position,
+ get real life projects, and start getting real time experience, with real credits of real web sites , applications, servers or any other thing 
+ that will give you real experience, and more imporatntly confidence.
+	</li>
+		</div>
+		
+{% endblock content %}

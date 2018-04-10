@@ -108,10 +108,7 @@ class ProfessionDetailView(DetailView):
     print("the originla queryset" , queryset)
      
     def get_context_data(self, **kwargs):
-        print("The args are:" + str(kwargs))
         context = super(ProfessionDetailView, self).get_context_data(**kwargs)
-        print("The Context Below")
-        print(context)
         return context
     
     def get_object(self, *args, **kwargs):

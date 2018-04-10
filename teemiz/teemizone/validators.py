@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 
+
 def validate_even(value):
     if value % 2 != 0:
         raise ValidationError(
@@ -9,19 +10,18 @@ def validate_even(value):
 
 
 def validate_email(value):
-        email = value
-        if ".edu" in email:
-            raise ValidationError("We do not accept edu emails")
-
+    email = value
+    if ".edu" in email:
+        raise ValidationError("We do not accept edu emails")
 
 
 CATEGORIES = ['IT', 'SW', 'DEVOPS', 'SYSTEM']
 
+
 def validate_category(value):
     cat = value.upper()
-    print (cat)
+    print(cat)
     if not value in CATEGORIES and not cat in CATEGORIES:
         raise ValidationError(f"{value} not a valid category")
-    
-    return cat
 
+    return cat

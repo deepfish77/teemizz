@@ -10,11 +10,13 @@ class TeamCreateForm(forms.ModelForm):
         
         fields = [
            
-            'name',         
+            'name',  
+            'summary', 
+            'owner',        
             'type',
             'objective',
             'industry',
-            'team_positions'
+          
             
         ]
         

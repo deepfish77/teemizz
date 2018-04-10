@@ -4,76 +4,77 @@
 
 {% block content %}
 
-<form class='form' method='GET' action='.'>
-<input type='text' placeholder="Search.." name='q' value='{{ request.GET.q }}'>
-<button class='btn btn-default' type='submit'>Search</button>
-</form>
-<hr/>
- <h5 style="color:Tomato;">Training Projects</h5>
-{% if projects %}
-     {% for proj in projects %}
-	<div></div>
-    <div class='row'>
-    <div class='col-sm-12'>
-        <div class='card' style="border: 2px solid DodgerBlue; background-color:hsl(0, 0%, 94%);"> 
-            <h5>{{ proj.name }}</h5>
-            <p><a href='{{ request.path}}?q={{ proj.name }}'>{{ proj.name }}</a> | 
-            <a href='{{ request.path}}?q= {{ proj.desired_tech }}'> {{ proj.desired_tech }}</a>
-         
-           
-            </p>
-            <p>
-            <ul>
-                {% for item in rest.item_set.all %}
-                    <li style='margin-bottom: 15px;'><b>{{ item.name }}</b><br/>
-                        {% for ing in item.get_contents %}
-                            <a href='{{ request.path}}?q={{ ing}}'>{{ ing}}</a>
-                        {% endfor %}
-                    </li>
-                {% endfor %}
-            </ul>
-            </p>
-        </div>
-    </div>
-    </div>
 
-{% endfor %}
 
-{% else %}
-<p class='lead'>No Items Found</p>
-{% endif %}
 
-<h5 style="color:Tomato;">Recommended Teams</h5>
-{% if teams %}
-<div class='row'>
-     
+<div class='presentationdiv'>
+	<div class='slogen'>
+		<i>Get Real Life Experience - Start building your career</i>
+	</div>
+	{% load static %}
 
-    {% for team in teams %}
-  
-  	  <div class="card card--15">
-  <h2 class="card__title">Having fun with cards</h2>
-  <img class="card__img" src="http://oi66.tinypic.com/205xy4i.jpg" alt="">
-  <p class="card__text">Ok that's me with my not creative mind, now it's your turn add your cards to the house</p>
-  <a class="card__btn" href="" class="">buy me</a>
 </div>
-        <div class='w3-container w3-red w3-cell'> 
-            <h4>{{ team.name }}</h4>
-            <p><a href='{{ request.path}}?q={{ team.name }}'>{{ team.name }}</a> | 
-            <a href='{{ request.path}}?q= {{ team.objective }}'> {{ proj.desired_tech }}</a>
-            <form class='form' method='GET' action='.'>
-					<button class='btn btn-default' type='submit'>Join Team</button>
-			</form>
-          
-           
-           
-        </div>
-    </div>
+	<div class = 'search'>
+		<form class='form' method='GET' action='.'>
+		<input id=search_main type='text' size=60em placeholder="Find a team and start working.." name='q' value='{{ request.GET.q }}'>
+		<button class='btn btn-sm' type='submit'>Find Your Team</button>
+		</form>
+	</div>
+
+
+<h5 style="color:Green;">Recommended Teams for you </h5>
+<div class='row'  >
+	{% if teams %}
+	    {% for team in teams %}
+	
+	 <div class="left-block">
+	  <div class="card card--15" >
+	 	 <h5 class="card__title">{{ team.name }}</h5>
+	
+	 	     <p><span class="glyphicon glyphicon-user"></span><small><font color="blue">Positions</font></small>
+  	  {% for position in positions%}
+  	  	{% if position.related_team.id == team.id %}
+         <font size="2" color="green">{{ position }}</font>
+          {% endif %}
+            {% endfor %}
+	 </p>
+	  	<p><span class="glyphicon glyphicon-road"></span><small> <strong>Objective: </strong></small>{{ team.objective }}</p>
+  	 	<p><span class="glyphicon glyphicon-paperclip"></span> <small><strong>Team Type:</strong> </small>{{ team.get_type_display}}</p>
+ 		<p> <span class="glyphicon glyphicon-pencil"></span> <small><strong>Team Industry </strong></small>{{ team.industry }}</p>
+ 		<p> <span class="glyphicon glyphicon-comment"></span><small> <strong>Team Summary</strong> {{ team.summary}}</small></p>
+	  	 
+	 	 <a class="card__btn_team" 	href='teammates/detail/{{ team.slug }}/'>{{ team }}</a>
+	  </div>   
+	</div>
+	
+		{% endfor %}
+	
+	{% else %}
+	<p class='lead'>No Items Found</p>
+	{% endif %}
+	</div>
+ <h5 style="color:Tomato;">Training Projects</h5>
+<div class='row'  >
+	{% if projects %}
+ 	    {% for proj in projects %}
+
+		 <div class="left-block">
+		  <div class="card card--15" >
+		 	 <h2 class="card__title"> <h5>{{ proj.name }}</h5></h2>
+		 	 <img class="card__img" src="https://udemy-images.udemy.com/featured_collections_item/360x220/58_01fb_3.jpg" alt="">
+		  	<p class="card__text">  {{ proj.desired_tech }}</p>
+		 	 <a class="card__btn" href="" class="">Get Project</a>
+		  </div>   
+		 </div>
+
     
 
-{% endfor %}
+		{% endfor %}
 
-{% else %}
-<p class='lead'>No Items Found</p>
-{% endif %}
+	{% else %}
+		<p class='lead'>No Items Found</p>
+	{% endif %}
+</div>
 
-{% endblock %}
+
+	{% endblock %}

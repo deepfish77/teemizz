@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang=en>
- {% include 'snippets/css.html' %}
- 	{% include 'snippets/js.html' %}
+{% include 'snippets/css.html' %} {% include 'snippets/js.html' %}
 <head>
-<title>{% block head_title %}TeeMixz{% endblock head_title %}</title>
+<title>{% block head_title %}TeeMiz{% endblock head_title %}</title>
 
 <br>
 
@@ -13,7 +12,7 @@
 <body>
 
 	{% include 'snippets/nav.html' %}
-			
+
 	<div class='container'>{% block content %}{% endblock content %}
 	</div>
 
